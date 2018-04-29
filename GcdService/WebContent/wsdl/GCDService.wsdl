@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://service.sonalika.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://service.sonalika.com" xmlns:intf="http://service.sonalika.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://service.sonalika.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="gcd">
+    <complexType>
+     <sequence>
+      <element name="number1" type="xsd:int"/>
+      <element name="number2" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="gcdResponse">
+    <complexType>
+     <sequence>
+      <element name="gcdReturn" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="connection">
+    <complexType/>
+   </element>
+   <element name="connectionResponse">
+    <complexType/>
+   </element>
+   <element name="ConnectionToMySql">
+    <complexType/>
+   </element>
+   <element name="ConnectionToMySqlResponse">
+    <complexType/>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="gcdRequest">
+
+      <wsdl:part element="impl:gcd" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ConnectionToMySqlResponse">
+
+      <wsdl:part element="impl:ConnectionToMySqlResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="gcdResponse">
+
+      <wsdl:part element="impl:gcdResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="connectionRequest">
+
+      <wsdl:part element="impl:connection" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="connectionResponse">
+
+      <wsdl:part element="impl:connectionResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="ConnectionToMySqlRequest">
+
+      <wsdl:part element="impl:ConnectionToMySql" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="GCDService">
+
+      <wsdl:operation name="gcd">
+
+         <wsdl:input message="impl:gcdRequest" name="gcdRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:gcdResponse" name="gcdResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="connection">
+
+         <wsdl:input message="impl:connectionRequest" name="connectionRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:connectionResponse" name="connectionResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ConnectionToMySql">
+
+         <wsdl:input message="impl:ConnectionToMySqlRequest" name="ConnectionToMySqlRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:ConnectionToMySqlResponse" name="ConnectionToMySqlResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="GCDServiceSoapBinding" type="impl:GCDService">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="gcd">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="gcdRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="gcdResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="connection">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="connectionRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="connectionResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="ConnectionToMySql">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="ConnectionToMySqlRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="ConnectionToMySqlResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="GCDServiceService">
+
+      <wsdl:port binding="impl:GCDServiceSoapBinding" name="GCDService">
+
+         <wsdlsoap:address location="http://localhost:8080/GcdService/services/GCDService"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,34 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from GCDServiceService WSDL service -->
+
+  <service name="GCDService" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://service.sonalika.com"/>
+      <parameter name="wsdlServiceElement" value="GCDServiceService"/>
+      <parameter name="schemaQualified" value="http://service.sonalika.com"/>
+      <parameter name="wsdlServicePort" value="GCDService"/>
+      <parameter name="className" value="com.sonalika.service.GCDServiceSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="GCDService"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="gcd" qname="operNS:gcd" xmlns:operNS="http://service.sonalika.com" returnQName="retNS:gcdReturn" xmlns:retNS="http://service.sonalika.com" returnType="rtns:int" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+        <parameter qname="pns:number1" xmlns:pns="http://service.sonalika.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+        <parameter qname="pns:number2" xmlns:pns="http://service.sonalika.com" type="tns:int" xmlns:tns="http://www.w3.org/2001/XMLSchema"/>
+      </operation>
+      <operation name="connection" qname="operNS:connection" xmlns:operNS="http://service.sonalika.com" soapAction="" >
+      </operation>
+      <operation name="connectionToMySql" qname="operNS:ConnectionToMySql" xmlns:operNS="http://service.sonalika.com" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="connectionToMySql gcd connection"/>
+
+  </service>
+</deployment>
